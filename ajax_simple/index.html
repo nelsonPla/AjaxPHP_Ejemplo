@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax simple</title>
+</head>
+
+<body>
+
+    <button onclick="sendRequest()">
+        Send Ajax Request
+    </button>
+
+    <h1 id="cabecera"></h1>
+
+    <script>
+        function sendRequest() {
+            var respuesta = new XMLHttpRequest();
+            //respuesta.open('GET', 'backend.php', true);
+            respuesta.open('POST', 'backend.php', true);
+            respuesta.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            respuesta.onreadystatechange = function() {
+                document.getElementById('cabecera').innerHTML = respuesta.responseText;
+            }
+            respuesta.send('username=Fazt');
+        }
+    </script>
+
+</body>
+
+</html>
